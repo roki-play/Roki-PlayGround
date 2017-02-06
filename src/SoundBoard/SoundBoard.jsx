@@ -6,22 +6,38 @@ type SoundboardProps={
 
 }
 type SoundBoardState={
-play:boolean
+selected:number
 }
-
+var fakeitems=[
+    {name:"item",link:"none"},
+    {name:"item",link:"none"},
+    {name:"item",link:"none"},
+    {name:"item",link:"none"},
+]
 
 export default class SoundBoard extends Component{
 props:SoundboardProps
-state:SoundBoardState
+state:SoundBoardStateitem
 constructor(){
     super()
-    this.state={play:true}
+    this.state={selected:0}
 }
 
 render(){
-    return(
+    let i=0
+    let Rows=[]
+          fakeitems.forEach(
+    item=>{
+        Rows.push(<tr><td key={i}><PlayButton buttonKey={i} play={this.state.selected==i?true:false} exportCLick={(buttonKey)=>{this.setState({selected:buttonKey})}}/>{item.name}</td></tr>)
+        i++
+    }
+)
 
-        <div>pal<PlayButton play={this.state.play} exportCLick={()=>{this.setState({play:!this.state.play})}} /></div>
+    return(
+<div>{Rows} 
+    MORE SOON!!!      </div>
+
+
     )
 }
 

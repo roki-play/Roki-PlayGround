@@ -159,7 +159,11 @@ to {transform:rotate(1440deg);}}
     height:0px;
     width:0px;
 }
-
+.hello-wrapper{
+    color: white;
+    background-color: black;
+    min-height: 500px
+}
 /******COLORS****/
 .green{
     color:green
