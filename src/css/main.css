@@ -164,8 +164,13 @@ to {transform:rotate(1440deg);}}
     background-color: black;
     min-height: 500px
 }
+.toggler{
+    height: 35px;
+    width: 35px;
+    background: black
+}
 /******COLORS****/
 .green{
     color:green
-    
+
 }

@@ -29,12 +29,12 @@ export default class Main extends PureComponent {
 
   <div className="main-container">
 
-<Navbar inverse>
- 
-<NavbarToggler onClick={()=>{this.setState({sidebarToggled:!this.state.sidebarToggled})}}><img height="25px" width="25px" src={Drawing}/></NavbarToggler>
-<NavbarBrand><a className="homelink" href="/hello">Back Home</a></NavbarBrand>
-
-</Navbar>
+<div className="navbar navbar-inverse">
+ <span>
+<button className="toggler" onClick={()=>{this.setState({sidebarToggled:!this.state.sidebarToggled})}}><img height="25px" width="25px" src={Drawing}/></button>
+<a className="homelink" href="/hello">Back Home</a>
+ </span>
+</div>
 {this.state.sidebarToggled?
  <SideBar/>
  :null}
