@@ -30,10 +30,10 @@ export default class Main extends PureComponent {
   <div className="main-container">
 
 <Navbar inverse>
-  <span>
+ 
 <NavbarToggler onClick={()=>{this.setState({sidebarToggled:!this.state.sidebarToggled})}}><img height="25px" width="25px" src={Drawing}/></NavbarToggler>
 <NavbarBrand><a className="homelink" href="/hello">Back Home</a></NavbarBrand>
-</span>
+
 </Navbar>
 {this.state.sidebarToggled?
  <SideBar/>
