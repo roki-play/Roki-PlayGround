@@ -15,7 +15,7 @@ render(){
             <ul className="sidebar-nav">
                
                 <li>
-                    <a href="#">MORE TO COME SOON</a>
+                    <a href="/SoundBoard">MY SOUNDBOARD</a>
                 </li>
                 <li>
                            <a href="#">MORE TO COME SOOV</a>

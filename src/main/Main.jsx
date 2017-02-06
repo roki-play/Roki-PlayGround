@@ -3,8 +3,11 @@ import React, { PureComponent, Element } from 'react'
 import CSSAnimation from 'react-css-animations' 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import SideBar from '../components/SideBar.jsx'
+import {Navbar,NavbarToggler,NavbarBrand} from 'reactstrap'
+import Drawing from '../Assets/Logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/main.css'
+import '../css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css'
 type MainProps = {
  
 }
@@ -23,57 +26,20 @@ export default class Main extends PureComponent {
   }
   render() {
     return (
+
   <div className="main-container">
 
-<div className="navbar-inverse">
-<button className="btn" onClick={()=>{this.setState({sidebarToggled:!this.state.sidebarToggled})}}>Click For More Content ></button>
-
-</div>
+<Navbar inverse>
+  <span>
+<NavbarToggler onClick={()=>{this.setState({sidebarToggled:!this.state.sidebarToggled})}}><img height="25px" width="25px" src={Drawing}/></NavbarToggler>
+<NavbarBrand><a className="homelink" href="/hello">Back Home</a></NavbarBrand>
+</span>
+</Navbar>
 {this.state.sidebarToggled?
  <SideBar/>
  :null}
 <div className={this.state.sidebarToggled?"wrapper toggled":"wrapper"}>
-
-        <CSSAnimation
-      name='hello'
-      iterationCount={1}
-      duration={2000}
-      onEnd={() => {this.setState({appear:true})}}>
-          <h1 className="hello">Hello</h1>
-        </CSSAnimation>
-      <CSSAnimation
-      name="welcome"
-      iterationCount={1}
-      playState={this.state.appear?"running":"paused"}
-      duration={1500}>
-        <h2 className="welcome">Welcome To My Playground </h2>
-        <CSSAnimation
-      name="contentLink"
-      iterationCount={1}
-      playState={this.state.appear?"running":"paused"}
-      duration={1000}>
-    <h2 className="contentLink">This is where i come to play with code and stuff<br/>
-    All the code for this project is stored <a href="https://github.com/roki-play/Roki-PlayGround">here</a><br/></h2>
-                      <CSSAnimation
-                        name="haveFun"
-                        iterationCount={1}
-                        playState={this.state.appear?"running":"paused"}
-                        duration={2500}>
-                        <h2 className="haveFun">HAVE FUN !!!!!!!!</h2>
-                    </CSSAnimation>
-            </CSSAnimation>
-            CLick :=)------>>>>>
-        </CSSAnimation>
-     <div className="container center">
-        <CSSAnimation name="button"
-        infinite
-        playState={this.state.pauseButton?"running":"paused"}
-        duration={1500}>   
-        <button onClick={()=>this.setState({
-            pauseButton:!this.state.pauseButton
-        })} className="btn-primary">Click Me If You Can :P</button>
-</CSSAnimation>
-</div>
+   {this.props.children}
        </div>
 </div>
     )

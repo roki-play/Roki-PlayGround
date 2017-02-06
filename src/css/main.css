@@ -6,9 +6,9 @@
     from{transform: rotate(0);opacity: 0}
     to{transform: rotate(1080deg);opacity: 1}
 }
-@keyframes hello {
-   from {width:1500px;transform:rotate(0deg);}
-    to {width:0px;transform:rotate(360deg);}
+@keyframes LogoAnimation {
+   from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }
 @keyframes contentLink{
     from {transform:rotate(0deg);}
@@ -36,7 +36,7 @@ to {transform:rotate(1440deg);}}
   100% {opacity: 1; }
   }
 .main-container{
-  background: darkred;  
+  background: white;  
   height: 100%;
   width: 100%;
   min-height: 750px;
@@ -47,6 +47,12 @@ to {transform:rotate(1440deg);}}
     color: white;
     width: 150x
 
+}
+.homelink{
+    color: white
+}
+.homelink:hover{
+    color: lightblue
 }
 .wrapper {
     width:100%;
@@ -61,7 +67,12 @@ to {transform:rotate(1440deg);}}
     padding-left: 250px;
 }
 .navbar-inverse{
-    background: linear-gradient(to top, white, black);
+   
+    background: white;
+        border-color: black;
+    border-style:solid;
+    border-width: 1px;
+    background-color: #000;
 }
 .sidebar-wrapper {
   z-index: 1000;
@@ -71,9 +82,9 @@ to {transform:rotate(1440deg);}}
     height: 100%;
     margin-left: -250px;
 
-    background-color: #000;
 
 }
+
 .buttonDiv{
     height: 50px;
     width: 150px
@@ -142,4 +153,14 @@ to {transform:rotate(1440deg);}}
     color: #fff;
     background: none;
 }
+.img-wrapper{
+    padding-top: 250px;
+    padding-left: 250px;
+    height:0px;
+    width:0px;
+}
 
+/******COLORS****/
+.green{
+    color:green
+}
