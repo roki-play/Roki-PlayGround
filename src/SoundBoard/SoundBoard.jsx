@@ -16,7 +16,7 @@ type SoundboardProps={
 }
 type SoundBoardState={
 waveType:number,
-playing:boolean,
+playing:{saw:boolean,sine:boolean,square:boolean,triangle:boolean},
 frequency:number
 }
 
@@ -25,7 +25,7 @@ props:SoundboardProps
 state:SoundBoardState
 constructor(){
     super()
-    this.state={selected:0, frequency:440, waveType:WaveTypes.sine}
+    this.state={selected:0, frequency:440, playing:{sine:false,square:false,saw:false,triangle:false}}
 }
   
  
@@ -42,20 +42,7 @@ channelTriangle = webaudio((t, i)=>{
 return  osc.triangle(t, this.state.frequency) 
 })
 
-stopOsc(state){
-    switch (state){
-    case WaveTypes.saw:this.channelSaw.stop()
-    break
-    case WaveTypes.sine:this.channelSine.stop()
-    break
-    case WaveTypes.square:this.channelSquare.stop()
-    break
-    case WaveTypes.triangle:this.channelTriangle.stop()
-    break
-    
-}
-this.setState({playing:false})
-}
+
 
 
 render(){
@@ -64,14 +51,7 @@ render(){
             <div>
                 <h3> Little Synth:::For now it works only on desktop browser :/</h3>
            
-                        <h6>Select Wave Type</h6>  
-                        <select onChange={(e)=>{this.stopOsc(this.state.waveType);this.setState({waveType:e.target.value})}}>
-                            <option value={WaveTypes.sine}>Sine</option>
-                            <option value={WaveTypes.saw}>Saw</option>
-                            <option value={WaveTypes.square}>Square</option>
-                            <option value={WaveTypes.triangle}>Triangle</option>
-                        </select>
-              
+                      
                 <h6>Frequency Level: {this.state.frequency}</h6>
                 <h6>Set frequency:  </h6>    
                 <span className="FreqSlidebar" >
@@ -84,22 +64,58 @@ render(){
                                                     }
                     />
                 </span>
-                 <h6>{this.state.playing?"Pause":"Play"}!!  </h6>
-               {this.state.waveType===WaveTypes.sine?<button onClick={()=>{!this.state.playing?this.channelSine.play():this.channelSine.stop();this.setState({playing:!this.state.playing})}}>
-                    <Icon glyph={this.state.playing?"pause":"play"} />
-                </button> :null}
+                <h4>SINE:</h4>
 
-                {this.state.waveType===WaveTypes.saw?<button onClick={()=>{!this.state.playing?this.channelSaw.play():this.channelSaw.stop();this.setState({playing:!this.state.playing})}}>
-                    <Icon glyph={this.state.playing?"pause":"play"} />
-                </button> :null}
+                <button onClick={()=>{!this.state.playing.sine?
+                                        this.channelSine.play():
+                                        this.channelSine.stop();
+                                    this.setState({playing:{triangle:this.state.playing.triangle,
+                                                            square:this.state.playing.square,
+                                                            saw:this.state.playing.saw,
+                                                            sine:!this.state.playing.sine}})
+                                    }}>
+                    <Icon glyph={this.state.playing.sine?"pause":"play"} />
+                </button>
+                 <h4>SAW:</h4>
 
-                {this.state.waveType===WaveTypes.square?<button onClick={()=>{!this.state.playing?this.channelSquare.play():this.channelSquare.stop();this.setState({playing:!this.state.playing})}}>
-                    <Icon glyph={this.state.playing?"pause":"play"} />
-                </button> :null}
+                 <button onClick={()=>{!this.state.playing.saw?
+                                        this.channelSaw.play():
+                                        this.channelSaw.stop();
+                                    this.setState({playing:{triangle:this.state.playing.triangle,
+                                                            square:this.state.playing.square,
+                                                            saw:!this.state.playing.saw,
+                                                            sine:this.state.playing.sine}})
+                                    }}>
+                    <Icon glyph={this.state.playing.saw?"pause":"play"} />
+                </button> 
+                <h4>SQUARE:</h4>
 
-                {this.state.waveType===WaveTypes.triangle?<button onClick={()=>{!this.state.playing?this.channelTriangle.play():this.channelTriangle.stop();this.setState({playing:!this.state.playing})}}>
-                    <Icon glyph={this.state.playing?"pause":"play"} />
-                </button> :null}
+                <button onClick={()=>{!this.state.playing.square?
+                                        this.channelSquare.play():
+                                        this.channelSquare.stop();
+                                    this.setState({playing:{triangle:this.state.playing.triangle,
+                                                            square:!this.state.playing.square,
+                                                            saw:this.state.playing.saw,
+                                                            sine:this.state.playing.sine}})
+                                    }}>
+                    <Icon glyph={this.state.playing.square?"pause":"play"} />
+                </button> 
+                                
+                <h4>TRIANGLE:</h4>
+
+                <button onClick={()=>{!this.state.playing.triangle?
+                                        this.channelTriangle.play():
+                                        this.channelTriangle.stop();
+                                    this.setState({playing:{triangle:!this.state.playing.triangle,
+                                                            square:this.state.playing.square,
+                                                            saw:this.state.playing.saw,
+                                                            sine:this.state.playing.sine}})
+                                    }}>
+                    <Icon glyph={this.state.playing.triangle?"pause":"play"} />
+                </button> 
+
+                
+                 
                
             </div>
     )
