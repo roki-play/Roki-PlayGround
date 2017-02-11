@@ -21,10 +21,7 @@ export function PlayButton(props:PlayButtonProps){
   
         <div className="col-sm-3 play-border" onClick={()=>props.exportCLick(props.buttonKey)}>         
             <i className={props.play===true?"fa fa-play green":"fa fa-play"} />
-     <div className="col-sm-3">
-    test
-    
-      </div>
+
     
   </div>
   </span>

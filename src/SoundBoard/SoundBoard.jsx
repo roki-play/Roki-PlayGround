@@ -1,12 +1,15 @@
 //@flow
 import React,{Component} from 'react'
 import {PlayButton} from './SoundBoardComponents/Reusables.jsx'
+import webaudio from 'webaudio'
 import '../css/SoundBoard.css'
 type SoundboardProps={
 
 }
 type SoundBoardState={
-selected:number
+selected:number,
+playing:boolean,
+frequency:number
 }
 var fakeitems=[
     {name:"item",link:"none"},
@@ -22,22 +25,32 @@ constructor(){
     super()
     this.state={selected:0}
 }
+   tau = Math.PI * 2
+   frequency = 440
+;
 
+     
+ channel = webaudio((time, i)=>{
+  return Math.sin(time * this.tau * this.frequency)
+})
 render(){
-    let i=0
-    let Rows=[]
-          fakeitems.forEach(
-    item=>{
-        Rows.push(<tr><td key={i}><PlayButton buttonKey={i} play={this.state.selected==i?true:false} exportCLick={(buttonKey)=>{this.setState({selected:buttonKey})}}/>{item.name}</td></tr>)
-        i++
-    }
-)
+
+this.state.playing?this.channel.play():this.channel.stop()
+
+
+
+  
 
     return(
-<div>{Rows} 
-    MORE SOON!!!      </div>
+<div>
+<span>
+Set frequency:
+<input/>
+</span>
 
+<PlayButton play={this.state.playing?true:false} exportCLick={(buttonKey)=>{this.setState({playing:!this.state.playing})}}/>  
 
+ </div>
     )
 }
 
