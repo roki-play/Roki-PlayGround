@@ -1,13 +1,7 @@
 //@flow
 import React ,{PureComponent} from 'react'
 
-
 export default class SideBar extends PureComponent{
-
-
-
-
-
 
 render(){
     return(
@@ -15,22 +9,22 @@ render(){
             <ul className="sidebar-nav">
                
                 <li>
-                    <a href="/SoundBoard">MY SOUNDBOARD</a>
+                    <a href="/Synth">MY LITTLE SYNTH</a>
                 </li>
                 <li>
-                           <a href="#">MORE TO COME SOOV</a>
+                           <a href="#">MORE TO COME SOON :)</a>
                 </li>
                 <li>
-                           <a href="#">MORE TO COME SOOV</a>
+                          <a href="#">MORE TO COME SOON :)</a>
                 </li>
                 <li>
-                           <a href="#">MORE TO COME SOOV</a>
+                         <a href="#">MORE TO COME SOON :)</a>
                 </li>
                 <li>
-                           <a href="#">MORE TO COME SOOV</a>
+                          <a href="#">MORE TO COME SOON :)</a>
                 </li>
                 <li>
-                           <a href="#">MORE TO COME SOOV</a>
+                           <a href="#">MORE TO COME SOON :)</a>
                 </li>
                 <li>
                            <a href="#">MORE TO COME SOOV</a>

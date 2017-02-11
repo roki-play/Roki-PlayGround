@@ -19,16 +19,10 @@ waveType:number,
 playing:boolean,
 frequency:number
 }
-var fakeitems=[
-    {name:"item",link:"none"},
-    {name:"item",link:"none"},
-    {name:"item",link:"none"},
-    {name:"item",link:"none"},
-]
 
 export default class SoundBoard extends Component{
 props:SoundboardProps
-state:SoundBoardStateitem
+state:SoundBoardState
 constructor(){
     super()
     this.state={selected:0, frequency:440, waveType:WaveTypes.sine}
@@ -58,6 +52,7 @@ stopOsc(state){
     break
     case WaveTypes.triangle:this.channelTriangle.stop()
     break
+    
 }
 this.setState({playing:false})
 }
@@ -90,19 +85,19 @@ render(){
                     />
                 </span>
                  <h6>{this.state.playing?"Pause":"Play"}!!  </h6>
-               {this.state.waveType==WaveTypes.sine?<button onClick={()=>{!this.state.playing?this.channelSine.play():this.channelSine.stop();this.setState({playing:!this.state.playing})}}>
+               {this.state.waveType===WaveTypes.sine?<button onClick={()=>{!this.state.playing?this.channelSine.play():this.channelSine.stop();this.setState({playing:!this.state.playing})}}>
                     <Icon glyph={this.state.playing?"pause":"play"} />
                 </button> :null}
 
-                {this.state.waveType==WaveTypes.saw?<button onClick={()=>{!this.state.playing?this.channelSaw.play():this.channelSaw.stop();this.setState({playing:!this.state.playing})}}>
+                {this.state.waveType===WaveTypes.saw?<button onClick={()=>{!this.state.playing?this.channelSaw.play():this.channelSaw.stop();this.setState({playing:!this.state.playing})}}>
                     <Icon glyph={this.state.playing?"pause":"play"} />
                 </button> :null}
 
-                {this.state.waveType==WaveTypes.square?<button onClick={()=>{!this.state.playing?this.channelSquare.play():this.channelSquare.stop();this.setState({playing:!this.state.playing})}}>
+                {this.state.waveType===WaveTypes.square?<button onClick={()=>{!this.state.playing?this.channelSquare.play():this.channelSquare.stop();this.setState({playing:!this.state.playing})}}>
                     <Icon glyph={this.state.playing?"pause":"play"} />
                 </button> :null}
 
-                {this.state.waveType==WaveTypes.triangle?<button onClick={()=>{!this.state.playing?this.channelTriangle.play():this.channelTriangle.stop();this.setState({playing:!this.state.playing})}}>
+                {this.state.waveType===WaveTypes.triangle?<button onClick={()=>{!this.state.playing?this.channelTriangle.play():this.channelTriangle.stop();this.setState({playing:!this.state.playing})}}>
                     <Icon glyph={this.state.playing?"pause":"play"} />
                 </button> :null}
                
